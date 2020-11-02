@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--###############################################################################-->
+<!-- Redfish Schema: SchemaNamev1.0.0 -->
+<!---->
+<!-- Copyright 2019DMTF. -->
+<!-- For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--###############################################################################-->
+
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+   <!-- This section consists of references to standard Redfish Schema bits. -->
+   <!-- Do not modify these -->
+   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/ complete/vocabularies/Org.OData.Core.V1.xml">
+      <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+   </edmx:Reference>
+   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/ complete/vocabularies/Org.OData.Capabilities.V1.xml">
+      <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities" />
+   </edmx:Reference>
+   <edmx:Reference Uri="http://redfish.dmtf.org/Schemas/v1/Resource_v1.xml">
+      <edmx:Include Namespace="Resource" />
+      <edmx:Include Namespace="Resource.v1_0_0" />
+   </edmx:Reference>
+   <edmx:Reference Uri="http://redfish.dmtf.org/Schemas/v1/RedfishExtensions_v1.xml">
+      <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish" />
+      <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation" />
+   </edmx:Reference>
+   <!-- You can add your own schema-specific references here -->
+   <edmx:Reference Uri="http://redfish.dmtf.org/Schemas/v1/ReferencedSchemaName_v1.xml">
+      <edmx:Include Namespace="ReferencedSchemaName" />
+   </edmx:Reference>
+   <!-- This section contains all the data properties for your schema -->
+   <edmx:DataServices>
+      <!-- This bit declares the namespace for your schema, enabling it to be referenced-->
+      <!-- from within Redfish -->
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SegmentFlags">
+         <Annotation Term="Redfish.OwningEntity" String="IBM" />
+         
+         <!-- This declares the main entity type for your schema, establishing a root for the data hierarchy in it -->
+         <EntityType Name="SegmentFlags" BaseType="SegmentFlags.v1_0_0.SegmentFlags" Abstract="true">
+            <Annotation Term="OData.Description" String="The SegmentFlag schema defines the properties of a Management Console SegmentFlag attached to a system." />
+            <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Management Console SegmentFlag attached to a system." />
+            <Annotation Term="OData.AdditionalProperties" Bool="false" />
+         </EntityType>
+         <!-- No actions for this resource -->
+      </Schema>
+      <!-- This section contains information on the various properties contained -->
+      <!-- within version 1.0.0 of your schema -->
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SegmentFlags.v1_0_0">
+         <Annotation Term="Redfish.OwningEntity" String="IBM" />
+
+         <EntityType Name="SegmentFlags" BaseType=" SegmentFlags.SegmentFlags">
+            <!-- The top-level properties for your schema go here. -->
+            <Property Name="SegmentFlags" Type="Collection(SegmentFlags.v1_0_0.SegmentFlag)" Nullable="false">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+               <Annotation Term="OData.Description" String="A sample property." />
+               <Annotation Term="OData.LongDescription" String="This property shall contain a longer description of the sample property." />
+            </Property>
+         </EntityType>
+
+            <ComplexType Name="SegmentFlag">
+               <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+               <Annotation Term="OData.Description" String="The vaccination applied to this dog."/>
+               <Annotation Term="OData.LongDescription" String="This type shall contain the vaccination applied to this dog."/>
+               <Property Name="LockFlag" Type="Edm.String" Nullable="false">
+                  <Annotation Term="OData.Description" String="The name of a vaccination applied to this dog."/>
+                  <Annotation Term="OData.LongDescription" String="This property shall contain the standard medical name for the vaccination applied to this dog."/>
+                  <Annotation Term="Validation.Pattern" String="^(LockAll|LockSame|DontLock)"/>
+                  <Annotation Term="Redfish.Required"/>
+               </Property>
+               <Property Name="SegmentLength" Type="Edm.Int64" Nullable="false">
+                  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                  <Annotation Term="Validation.Minimum" Int="1"/>
+                  <Annotation Term="Validation.Maximum" Int="4"/>
+                  <Annotation Term="OData.Description" String="A sample property." />
+                  <Annotation Term="OData.LongDescription" String="This property shall contain a longer description of the sample property." />
+                  <Annotation Term="Redfish.Required"/>
+               </Property>
+            </ComplexType>
+
+
+         <!-- Additional complex and enumeration types are defined here, -->
+         <!-- within the context of the schema -->
+      </Schema>
+      <!-- Additional versions of your schema can go here -->
+   </edmx:DataServices>
+</edmx:Edmx>
+
+
