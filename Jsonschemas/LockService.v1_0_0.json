@@ -64,6 +64,64 @@
             "properties": {
                 "#LockService.AcquireLock": {
                     "$ref": "#/definitions/AcquireLock"
+                },
+                "#LockService.GetLockList": {
+                    "$ref": "#/definitions/GetLockList"
+                },
+                "#LockService.ReleaseLock": {
+                    "$ref": "#/definitions/ReleaseLock"
+                }
+            },
+            "type": "object"
+        },
+        "GetLockList": {
+            "additionalProperties": false,
+            "description": "This action resets this port.",
+            "longDescription": "This action shall reset this port.",
+            "parameters": {
+                "SessionIDs": {
+                    "description": "The type of reset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "pattern": "^(Transaction|Session)",
+                    "type": "array"
+                },
+                "TransactionIDs": {
+                    "description": "The type of reset.",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "maximum": 4294967295,
+                    "minimum": 0,
+                    "type": "array"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -181,6 +239,55 @@
                 "Id",
                 "Name"
             ],
+            "type": "object"
+        },
+        "ReleaseLock": {
+            "additionalProperties": false,
+            "description": "This action resets this port.",
+            "longDescription": "This action shall reset this port.",
+            "parameters": {
+                "TransactionIDs": {
+                    "description": "The type of reset.",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "maximum": 4294967295,
+                    "minimum": 0,
+                    "type": "array"
+                },
+                "Type": {
+                    "description": "The type of reset.",
+                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "pattern": "^(Transaction|Session)",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
             "type": "object"
         }
     },

@@ -58,7 +58,46 @@
                   <Annotation Term="OData.Description" String="The type of reset."/>
                   <Annotation Term="OData.LongDescription" String="This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset."/>
                 </Parameter>
-              </Action>
+            </Action>
+
+            <Action Name="ReleaseLock" IsBound="true">
+              <Annotation Term="OData.Description" String="This action resets this port."/>
+              <Annotation Term="OData.LongDescription" String="This action shall reset this port."/>
+              <Parameter Name="ReleaseLock" Type="LockService.v1_0_0.Actions"/>
+              <Parameter Name="Type" Type="Edm.String">
+                <Annotation Term="OData.Description" String="The type of reset."/>
+                <Annotation Term="OData.LongDescription" String="This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset."/>
+                <Annotation Term="Validation.Pattern" String="^(Transaction|Session)"/>
+                <Annotation Term="Redfish.Required"/>
+              </Parameter>
+              <Parameter Name="TransactionIDs" Type="Collection(Edm.Int64)">
+                <Annotation Term="OData.Description" String="The type of reset."/>
+                <Annotation Term="OData.LongDescription" String="This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset."/>
+                <Annotation Term="Validation.Minimum" Int="0"/>
+                <Annotation Term="Validation.Maximum" Int="4294967295"/>
+              </Parameter>
+
+          </Action>
+
+          <Action Name="GetLockList" IsBound="true">
+            <Annotation Term="OData.Description" String="This action resets this port."/>
+            <Annotation Term="OData.LongDescription" String="This action shall reset this port."/>
+            <Parameter Name="GetLockList" Type="LockService.v1_0_0.Actions"/>
+            <Parameter Name="SessionIDs" Type="Collection(Edm.String)">
+              <Annotation Term="OData.Description" String="The type of reset."/>
+              <Annotation Term="OData.LongDescription" String="This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset."/>
+              <Annotation Term="Validation.Pattern" String="^(Transaction|Session)"/>
+              <Annotation Term="Redfish.Required"/>
+            </Parameter>
+            <Parameter Name="TransactionIDs" Type="Collection(Edm.Int64)">
+              <Annotation Term="OData.Description" String="The type of reset."/>
+              <Annotation Term="OData.LongDescription" String="This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset."/>
+              <Annotation Term="Validation.Minimum" Int="0"/>
+              <Annotation Term="Validation.Maximum" Int="4294967295"/>
+            </Parameter>
+
+        </Action>
+
             </Schema>
             
             <Schema
