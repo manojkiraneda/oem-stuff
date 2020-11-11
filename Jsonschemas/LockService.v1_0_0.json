@@ -14,7 +14,7 @@
                     "items": {
                         "$ref": "#/definitions/LockRecord"
                     },
-                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without thempl",
                     "type": "array"
                 }
             },
@@ -47,6 +47,8 @@
         },
         "Actions": {
             "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
@@ -70,6 +72,11 @@
                 },
                 "#LockService.ReleaseLock": {
                     "$ref": "#/definitions/ReleaseLock"
+                },
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "The available OEM-specific actions for this resource.",
+                    "longDescription": "This property shall contain the available OEM-specific actions for this resource."
                 }
             },
             "type": "object"
@@ -84,7 +91,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "longDescription": "This parameter shall contain the type of reset.  The servia request without the parameter and perform an implemen",
                     "pattern": "^(Transaction|Session)",
                     "type": "array"
                 },
@@ -93,7 +100,7 @@
                     "items": {
                         "type": "integer"
                     },
-                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "longDescription": "This parameter shall contain the type of reset.ice can accept a request without the parameter and perform an implemen",
                     "maximum": 4294967295,
                     "minimum": 0,
                     "type": "array"
@@ -241,6 +248,27 @@
             ],
             "type": "object"
         },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM-specific actions for this resource.",
+            "longDescription": "This type shall contain the available OEM-specific actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
         "ReleaseLock": {
             "additionalProperties": false,
             "description": "This action resets this port.",
@@ -251,14 +279,14 @@
                     "items": {
                         "type": "integer"
                     },
-                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "longDescription": "This parameter shall contain the type of reset.  The service can accept awithout the parameter and perform an implem",
                     "maximum": 4294967295,
                     "minimum": 0,
                     "type": "array"
                 },
                 "Type": {
                     "description": "The type of reset.",
-                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation specific default reset.",
+                    "longDescription": "This parameter shall contain the type of reset.  The service can accept a request we parameter and perform an implem",
                     "pattern": "^(Transaction|Session)",
                     "type": "string"
                 }
